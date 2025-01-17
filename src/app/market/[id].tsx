@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { Alert, Modal, View } from "react-native";
+import { Alert, Modal, View, StatusBar, ScrollView } from "react-native";
 import { router, useLocalSearchParams, Redirect } from "expo-router";
 import { useCameraPermissions, CameraView } from "expo-camera"
 
@@ -25,7 +25,6 @@ export default function Market() {
     const params = useLocalSearchParams<{id: string}>()
 
     const qrLock = useRef(false)
-    console.log(params.id)
 
     async function fetchMarket() {
         try {
@@ -102,9 +101,14 @@ export default function Market() {
 
     return(
         <View style={{flex: 1}}>
-            <Cover uri={data.cover}></Cover>
-            <Details data={data} />
-            {coupon && <Coupon code={coupon}/>}
+            <StatusBar barStyle="light-content" hidden={isVisibleCameraModal}/>
+
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <Cover uri={data.cover}></Cover>
+                <Details data={data} />
+                {coupon && <Coupon code={coupon}/>}
+            </ScrollView>
+
             <View style={{padding: 32}}>
                 <Button onPress={handleOpenCamera}>
                     <Button.Title>Ler QR Code</Button.Title>
