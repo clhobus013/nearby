@@ -22,6 +22,10 @@ O **Nearby App** é um aplicativo mobile de clube de benefícios que permite aos
 5. **Details Screen:** Detalhes do local e cupons.
 6. **Location Screen:** Localização detalhada com integração ao Google Maps.
 
+![Screenshot_3](https://github.com/user-attachments/assets/0fdd21c5-6aea-416f-a73a-12a7b61fdc64)
+
+![Screenshot_1](https://github.com/user-attachments/assets/c235760d-cf37-4a75-8e01-fecaa1333e3c)
+
 ---
 
 ## Tecnologias Utilizadas
