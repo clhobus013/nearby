@@ -3,13 +3,14 @@ import { IconPhone, IconMapPin, IconTicket } from "@tabler/icons-react-native";
 import { Button } from "@/components/button";
 import { router } from "expo-router";
 import { styles } from "./styles";
+import { Info } from "../info";
 
 export type PropsDetails = {
     name: string
     description: string
     address: string
     phone: string
-    cupons: number
+    coupons: number
     rules: {
         id: string
         description: string
@@ -28,7 +29,20 @@ export function Details({ data }: Props) {
 
             <View style={styles.group}>
                 <Text style={styles.title}>Informações</Text>
+                <Info icon={IconTicket} description={`${data.coupons} cupons disponíveis`}/>
+                <Info icon={IconMapPin} description={data.address}/>
+                <Info icon={IconPhone} description={data.phone}/>
             </View>
+
+            <View style={styles.group}>
+                <Text style={styles.title}>Regulamento</Text>
+                {data.rules.map((item) => (
+                    <Text key={item.id} style={styles.rule}>
+                        {`\u2022 ${item.description}`}
+                    </Text>
+                ))}
+            </View>
+
         </View>
     )
 }
